@@ -9,9 +9,11 @@ public class RobotMap {
     public static final int kRight2MotorId = 3;
     public static final int kspinningMotorId = 4;
 
-    public static final double Autotime1 = 1.0;
+    public static final double Autotime1 = 5.0;
 
-    public static double autodriveturn1;
 
 
 }
+
+//first bumper to half field: 3.39 seconds
+//back bumper to half field: 3.57 seconds
