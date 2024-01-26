@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+//import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 
 /**
@@ -19,17 +19,14 @@ import edu.wpi.first.wpilibj.motorcontrol.Talon;
  */
 public class Robot extends TimedRobot {
   private Talon left1 = new Talon(RobotMap.kLeft1MotorId); 
-  private Talon left2 = new Talon(RobotMap.kLeft2MotorId); 
+  //private Talon left2 = new Talon(RobotMap.kLeft2MotorId); 
   private Talon right1 = new Talon(RobotMap.kRight1MotorId); 
-  private Talon right2 = new Talon(RobotMap.kRight2MotorId);
+  //private Talon right2 = new Talon(RobotMap.kRight2MotorId);
   private Talon spinningMotor = new Talon(RobotMap.kspinningMotorId);
-  private MotorControllerGroup leftMotors = new MotorControllerGroup(left1, left2);
-  private MotorControllerGroup rightMotors = new MotorControllerGroup(right1, right2);
-  private DifferentialDrive differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
+  private DifferentialDrive differentialDrive = new DifferentialDrive(left1, right1);
   private XboxController drivController = new XboxController(0);
   private XboxController operator = new XboxController(1);
   private Timer timer = new Timer();
-  private DifferentialDrive drive;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -38,7 +35,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    rightMotors.setInverted(true);
+    right1.setInverted(true);
   }
 
   @Override
@@ -56,10 +53,10 @@ public class Robot extends TimedRobot {
 
     
     if (timer.get()<RobotMap.Autotime1){
-      drive.arcadeDrive(0.6, 0);
+      differentialDrive.arcadeDrive(0.6, 0);
 
     } else {
-      drive.arcadeDrive(0, 0);
+      differentialDrive.arcadeDrive(0, 0);
     }
     
 
